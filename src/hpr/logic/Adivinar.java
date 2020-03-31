@@ -17,22 +17,24 @@ public class Adivinar {
         while (jugar) {
             //Generamos el numero aleatorio!
             int numAdivinar = (int) (Math.random() * (1 - 1000 + 1) + 1000);
-            System.out.println("****************************************\n"
-                    + "*         Adivina el Numero!!!         *\n"
-                    + "****************************************\n");
+            System.out.println("Tengo un número entre el 1 y 1000 \n¿Puedes adivinar el número? \nEscribe tu opción:");
 
             //Tendras 10 oportunidades
             for (int i = 0; i <= 10; i++) {
                 if (i == 10) {
                     System.out.println("Perdite!!! \n");
+                    jugar = Boolean.FALSE;
                     break;
                 }
 
-                System.out.print("Escribe tu opción: ");
                 opcionJugador = in.nextInt();
 
                 if (numAdivinar == opcionJugador) {
-                    System.out.println("Felicidades Ganaste!!! \n");
+                    System.out.println("¡Excelente! ¡Adivinaste el número! \n¿Quieres jugar de nuevo?(s/n)");
+                    desJugar = in.next();
+                    if (desJugar.equals("n") || desJugar.equals("no") || desJugar.equals("NO")) {
+                        jugar = Boolean.FALSE;
+                    }
                     break;
                 } else {
                     if (numAdivinar > opcionJugador) {
@@ -42,14 +44,6 @@ public class Adivinar {
                     }
                 }
             }
-
-            //Preguntamos si desea seguir jugando
-            System.out.println("¿Desea seguir jugando? (s/n)");
-            desJugar = in.next();
-            if (desJugar.equals("n") || desJugar.equals("no") || desJugar.equals("NO")) {
-                jugar = Boolean.FALSE;
-            }
-
         }
     }
 
